@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @CamelSpringBootTest
 @SpringBootApplication
 @MockEndpoints("direct:end")
-class CameltestingApplicationTests  {
+class CamelRestingApplicationTests {
 	@Autowired
 	private ProducerTemplate template;
 
@@ -21,8 +21,8 @@ class CameltestingApplicationTests  {
 
 	@Test
 	public void testReceive() throws Exception {
-		mock.expectedBodiesReceived("Hello");
 		template.sendBody("direct:start", "Hello");
+		mock.expectedBodiesReceived("HELLO");
 		mock.assertIsSatisfied();
 	}
 }
