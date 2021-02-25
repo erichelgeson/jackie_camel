@@ -17,7 +17,7 @@ public class MyRoute extends RouteBuilder {
     public void configure() throws Exception {
         from("direct:start")
                 .bean(MyProcessor.class)
-                .to("mock:cmis:foo")
+                .to("cmis:foo") // no mock:
                 .to("mock:result");
     }
 }
