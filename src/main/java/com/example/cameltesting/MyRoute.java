@@ -7,8 +7,9 @@ import org.springframework.stereotype.Component;
 public class MyRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        from("direct:start")
-                .to("cmis:foo.com");
+        from("cmis:start").id("cmisRouteId")
+                .to("cmis:foo.com")
+                .to("log:foo?showAll=true");
     }
 }
 
